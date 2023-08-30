@@ -2,4 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.shadow::before{
+    text-shadow: 0px 0px 10px #67a11c
+}

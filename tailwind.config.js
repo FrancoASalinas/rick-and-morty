@@ -7,11 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        'r&m' : ['var(--font-get-shwifty)']
+      } ,
       colors:{
-        'light' : '#F7F0F5',
-        'dark' : '#39393A',
-        'green' : '#77F879',
-        'blue' : '#59A5D8'
+        'lb' : '#69c8ec'
+      },
+      backgroundImage:{
+        '1' : 'url("/image1.webp")',
+        '2' : 'url("/image2.webp")',
+        '3' : 'url("/image3.webp")',
+        'polka' : 'radial-gradient(#fafafa 1.3px, #000000 1.3px)',
       },
     },
   },
