@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 function Pages({
   data,
+  path
 }: {
-  data: { data: { characterPages: { info: { pages: string } } } };
+  data: string;
+  path: string
 }) {
-  const pagesNumber = data.data.characterPages.info.pages;
+  const pagesNumber = data;
   const pathname = usePathname();
   const actualPage = Number(pathname.split('/').slice(-1));
 
@@ -41,7 +42,7 @@ function Pages({
         ) : page === actualPage ? (
           <span className="text-lb">{page}</span>
         ) : (
-          <Link className="hover:underline " href={`/characters/${page}`}>
+          <Link className="hover:underline " href={`/${path}/${page}`}>
             {page}
           </Link>
         )

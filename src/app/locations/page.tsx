@@ -1,9 +1,5 @@
-function Locations() {
-    return ( 
-        <>
-        <h2>locations</h2>
-        </>
-     );
+import { redirect } from 'next/navigation'
+ 
+export default async function GET(request: Request) {
+  redirect('/locations/1')
 }
-
-export default Locations;

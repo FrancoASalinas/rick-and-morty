@@ -46,7 +46,7 @@ async function Characters({ params }: { params: { page: string } }) {
 
   return (
     <div className="backdrop-blur-[2px] text-white py-8">
-      <Pages data={data} />
+      <Pages data={data.data.characterPages.info.pages} path='characters'/>
       <div className="flex gap-10 flex-wrap mx-auto justify-around py-8">
         {data.data.characters.results.map((character: Character) => (
           <div className="rounded-xl overflow-hidden w-36 h-52 flip hover:scale-125 hover:z-30">
@@ -88,7 +88,7 @@ async function Characters({ params }: { params: { page: string } }) {
           </div>
         ))}
       </div>
-      <Pages data={data} />
+      <Pages data={data.data.characterPages.info.pages} path='characters'/>
     </div>
   );
 }
