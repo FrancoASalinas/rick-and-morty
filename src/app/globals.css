@@ -5,3 +5,27 @@
 .shadow::before{
     text-shadow: 0px 0px 10px #67a11c
 }
+
+.flip{
+    perspective: 600px;
+}
+
+.flip-content{
+    transform-style: preserve-3d;
+}
+
+.flip:hover .flip-content{
+    transform: rotateY(180deg);
+}
+
+.face{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;  
+    padding: 5px
+}
+
+.backface{
+    transform: rotateY(180deg);
+}

@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Header from '@/components/Pages';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -24,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${myFont.variable}`}>
       <body className="bg-black bg-polka bg-[length:26px_26px]">
-        {/* <Header /> */}
         <main className="min-h-screen w-full mx-auto max-w-2xl">
           {children}
         </main>
