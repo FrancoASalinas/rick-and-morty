@@ -1,7 +1,6 @@
-import Header from '@/components/Pages';
+import Header from '@/components/Header';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import localFont from 'next/font/local'
 
 
@@ -24,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${myFont.variable}`}>
       <body className="bg-black bg-polka bg-[length:26px_26px]">
-        <main className="min-h-screen w-full mx-auto max-w-2xl backdrop-blur-[2px] text-white py-8">
+        <Header />
+        <main className="min-h-screen w-full mx-auto max-w-2xl backdrop-blur-[2px] text-white">
           {children}
         </main>
       </body>
