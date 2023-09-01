@@ -46,7 +46,7 @@ async function Characters({ params }: { params: { page: string } }) {
   const data = await getClient().query({ query });
 
   return (
-    <div>
+    <>
       <Pages data={data.data.characterPages.info.pages} path='characters'/>
       <div className="flex gap-10 flex-wrap mx-auto justify-around py-8">
         {data.data.characters.results.map((character: Character) => (
@@ -54,7 +54,7 @@ async function Characters({ params }: { params: { page: string } }) {
         ))}
       </div>
       <Pages data={data.data.characterPages.info.pages} path='characters'/>
-    </div>
+    </>
   );
 }
 

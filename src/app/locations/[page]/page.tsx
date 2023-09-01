@@ -1,4 +1,4 @@
-import LocationCard from '@/components/LocationCard';
+import CustomCard from '@/components/CustomCard';
 import Pages from '@/components/Pages';
 import { getClient } from '@/lib/client';
 import { gql } from '@apollo/client';
@@ -40,7 +40,7 @@ async function Page({ params }: { params: { page: string } }) {
             dimension: string;
             residents: { image: string }[];
             id: string
-        }) => <LocationCard location={location} />
+        }) => <CustomCard data={location} path='locations' characters={location.residents} />
         )}
       </div>
       <Pages data={data.data.locationPages.info.pages} path='locations' />

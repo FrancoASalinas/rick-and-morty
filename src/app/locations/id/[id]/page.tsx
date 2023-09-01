@@ -1,4 +1,4 @@
-import Residents from '@/components/Residents';
+import CharactersList from '@/components/CharactersList';
 import { getClient } from '@/lib/client';
 import { gql } from '@apollo/client';
 
@@ -41,7 +41,7 @@ async function Location({ params }: { params: { id: string } }) {
         <span className="text-3xl underline">Dimension</span>
         {data.data.location.dimension}
       </div>
-      <Residents residents={data.data.location.residents} />
+      <CharactersList subject='residents' characters={data.data.location.residents} />
     </>
   );
 }

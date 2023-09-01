@@ -3,15 +3,15 @@ import { Character } from '@/app/characters/[page]/page';
 import { useState } from 'react';
 import CharacterCards from './CharacterCards';
 
-function Residents({ residents }: { residents: Character[] }) {
+function CharactersList({ characters, subject }: { characters: Character[]; subject: 'characters' | 'residents' }) {
   const [active, setActive] = useState(false);
 
   return (
     <div className="p-3">
       <div>
         <div className="w-1/4 flex justify-between">
-          <span className="text-3xl underline">Residents</span>
-          {residents.length > 0 && (
+          <span className="text-3xl underline">{subject[0].toUpperCase() + subject.slice(1)}</span>
+          {characters.length > 0 && (
             <span
               className="cursor-pointer text-3xl transition-all"
               onClick={() => setActive((prev) => !prev)}
@@ -21,23 +21,23 @@ function Residents({ residents }: { residents: Character[] }) {
           )}
         </div>
       </div>
-      {residents.length > 0 ? (
+      {characters.length > 0 ? (
         <div
           className={`${
             active ? 'block' : 'hidden'
           } flex gap-10 flex-wrap mx-auto justify-around py-8`}
         >
-          {residents.map((resident) => (
+          {characters.map((resident) => (
             <CharacterCards character={resident} />
           ))}
         </div>
       ) : (
         <p className='my-3'>
-        No residents known
+        No ${subject} known
         </p>
       )}
     </div>
   );
 }
 
-export default Residents;
+export default CharactersList;
