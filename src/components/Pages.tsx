@@ -2,13 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-function Pages({
-  data,
-  path
-}: {
-  data: string;
-  path: string
-}) {
+function Pages({ data, path }: { data: string; path: string }) {
   const pagesNumber = data;
   const pathname = usePathname();
   const actualPage = Number(pathname.split('/').slice(-1));
@@ -24,18 +18,32 @@ function Pages({
       }
     }
 
-    return pagesArray[1] !== 2
-      ? [pagesArray[0], '...', ...pagesArray.slice(1)]
-      : pagesArray[-0] !== Number(pagesNumber)
-      ? [...pagesArray, '...', Number(pagesNumber)]
-      : pagesArray;
+    if (pagesArray[1] !== 2 && pagesArray[-0] !== Number(pagesNumber)) {
+      return [
+        pagesArray[0],
+        '...',
+        ...pagesArray.slice(1),
+        '...',
+        Number(pagesNumber),
+      ];
+    } else if (pagesArray[1] !== 2) {
+      return [pagesArray[0], '...', ...pagesArray.slice(1)];
+    } else if (pagesArray[-0] !== Number(pagesNumber)) {
+      return [...pagesArray, '...', Number(pagesNumber)];
+    } else {
+      return pagesArray;
+    }
   }
 
   const pages = updatePagelist();
 
   return (
     <div className="flex w-full gap-5 justify-center text-xl">
-      {actualPage > 1 && <Link href={`${actualPage - 1}`}>{'<'}</Link>}
+      {actualPage > 1 && (
+        <Link href={`${actualPage - 1}`} className="hover:underline">
+          {'Back'}
+        </Link>
+      )}
       {pages.map((page) =>
         page === '...' ? (
           <span>...</span>
@@ -48,7 +56,9 @@ function Pages({
         )
       )}
       {actualPage < Number(pagesNumber) && (
-        <Link href={`${actualPage + 1}`}>{'>'}</Link>
+        <Link href={`${actualPage + 1}`} className="hover:underline">
+          {'Next'}
+        </Link>
       )}
     </div>
   );
