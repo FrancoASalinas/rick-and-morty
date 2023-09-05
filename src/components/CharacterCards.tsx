@@ -14,8 +14,9 @@ function CharacterCards({character}: {character:  Character}) {
                 <Image
                   src={character.image}
                   fill
+                  placeholder="empty"
                   alt="character image"
-                  style={{ objectFit: 'cover', zIndex: '5' }}
+                  style={{ objectFit: 'cover', zIndex: '5', backgroundColor: '#aaa' }}
                 />
               </div>
               <div

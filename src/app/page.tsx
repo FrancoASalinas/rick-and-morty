@@ -1,7 +1,10 @@
 'use client';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import image1 from '../../public/image1.webp';
+import image2 from '../../public/image2.webp';
+import image3 from '../../public/image3.webp';
 
 export default function Home() {
   const [focusedItem, setFocusedItem] = useState<number>(0);
@@ -36,6 +39,7 @@ export default function Home() {
         onMouseOut={() => setFocusedItem(0)}
       >
         <MenuItem
+          src={image1}
           focusedItem={focusedItem}
           onMouseEnter={focusItem}
           id={1}
@@ -43,6 +47,7 @@ export default function Home() {
           label="Characters"
         />
         <MenuItem
+        src={image2}
           focusedItem={focusedItem}
           onMouseEnter={focusItem}
           id={2}
@@ -50,6 +55,7 @@ export default function Home() {
           label="Locations"
         />
         <MenuItem
+        src={image3}
           focusedItem={focusedItem}
           onMouseEnter={focusItem}
           id={3}
@@ -64,12 +70,14 @@ export default function Home() {
 function MenuItem({
   onMouseEnter,
   id,
+  src,
   label,
   position,
   focusedItem,
 }: {
   onMouseEnter: (x: number) => void;
   id: number;
+  src: StaticImageData;
   label: string;
   position: 'top' | 'bottom' | 'center';
   focusedItem: number;
@@ -83,10 +91,11 @@ function MenuItem({
       onClick={() => router.push(label.toLowerCase())}
     >
       <Image
-        src={`/image${id}.webp`}
+        src={src}
         alt="background image"
         layout="cover"
         fill
+        placeholder='blur'
         style={{
           opacity: focusedItem === id ? '33%' : '100%',
           objectFit: 'cover',
