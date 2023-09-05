@@ -1,8 +1,6 @@
 import { gql } from '@apollo/client';
 import { getClient } from '@/lib/client';
-import { notFound, redirect } from 'next/navigation';
 import Pages from '@/components/Pages';
-import Image from 'next/image';
 import CharacterCards from '@/components/CharacterCards';
 
 export interface Character {

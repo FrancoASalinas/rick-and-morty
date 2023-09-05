@@ -3,6 +3,12 @@ import Pages from '@/components/Pages';
 import { getClient } from '@/lib/client';
 import { gql } from '@apollo/client';
 
+export interface Episode {
+  name: string;
+  id: string;
+  characters: { image: string }[];
+}
+
 async function Episodes({ params }: { params: { page: string } }) {
   const query = gql`
     query {
@@ -27,11 +33,17 @@ async function Episodes({ params }: { params: { page: string } }) {
 
   return (
     <>
-      <Pages data={data.data.episodesPages.info.pages} path='episodes' />
-      <div className="py-8 px-5 flex flex-wrap justify-around gap-5 text-black">
-        {data.data.episodes.results.map((episode: {name: string; id: string; characters: {image: string}[]}) => <CustomCard path='episodes' characters={episode.characters} data={episode} />)}
+      <Pages data={data.data.episodesPages.info.pages} path="episodes" />
+      <div className="cards-container">
+        {data.data.episodes.results.map((episode: Episode) => (
+          <CustomCard
+            path="episodes"
+            characters={episode.characters}
+            data={episode}
+          />
+        ))}
       </div>
-      <Pages data={data.data.episodesPages.info.pages} path='episodes' />
+      <Pages data={data.data.episodesPages.info.pages} path="episodes" />
     </>
   );
 }

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import image1 from '../../public/image1.webp';
 import image2 from '../../public/image2.webp';
 import image3 from '../../public/image3.webp';
+import Link from 'next/link';
 
 export default function Home() {
   const [focusedItem, setFocusedItem] = useState<number>(0);
@@ -85,10 +86,10 @@ function MenuItem({
   const router = useRouter();
 
   return (
+    <Link href={`${label.toLowerCase()}/1`}>
     <div
       className={`w-full h-full text-2xl cursor-pointer relative overflow-hidden bg-black`}
       onMouseEnter={() => onMouseEnter(id)}
-      onClick={() => router.push(label.toLowerCase())}
     >
       <Image
         src={src}
@@ -112,5 +113,6 @@ function MenuItem({
         id={label}
       ></span>
     </div>
+    </Link>
   );
 }
