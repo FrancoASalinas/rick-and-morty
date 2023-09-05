@@ -1,6 +1,6 @@
-'use client';
+
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 function CustomCard({
   data,
@@ -14,13 +14,12 @@ function CustomCard({
   characters: { image: string }[];
   path: string;
 }) {
-  const router = useRouter();
   return (
+    <Link href={`/${path}/id/${data.id}`}>
     <div
-      onClick={() => router.push(`/${path}/id/${data.id}`)}
-      className={` border border-white rounded-xl  relative overflow-hidden w-52 h-60 bg-[#aaa] cursor-pointer ${
+      className={` border border-white rounded-xl  relative overflow-hidden w-52 h-60 bg-[#aaa] cursor-pointer hover:scale-125 transition-all hover:z-20 ${
         characters.length >= 4
-          ? 'grid grid-rows-2 grid-cols-2'
+        ? 'grid grid-rows-2 grid-cols-2'
           : characters.length < 4 && characters.length >= 2
           ? 'grid grid-cols-2 grid-rows-1'
           : ''
@@ -101,6 +100,7 @@ function CustomCard({
         <span className="p-3">No residents known</span>
       )}
     </div>
+        </Link>
   );
 }
 
