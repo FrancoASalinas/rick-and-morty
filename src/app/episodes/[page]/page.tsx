@@ -33,7 +33,7 @@ async function Episodes({ params }: { params: { page: string } }) {
 
   return (
     <>
-      <Pages data={data.data.episodesPages.info.pages} path="episodes" />
+      <Pages pagesNumber={data.data.episodesPages.info.pages} path="episodes" />
       <div className="cards-container">
         {data.data.episodes.results.map((episode: Episode) => (
           <CustomCard
@@ -43,7 +43,7 @@ async function Episodes({ params }: { params: { page: string } }) {
           />
         ))}
       </div>
-      <Pages data={data.data.episodesPages.info.pages} path="episodes" />
+      <Pages pagesNumber={data.data.episodesPages.info.pages} path="episodes" />
     </>
   );
 }

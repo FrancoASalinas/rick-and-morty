@@ -45,13 +45,13 @@ async function Characters({ params }: { params: { page: string } }) {
 
   return (
     <>
-      <Pages data={data.data.characterPages.info.pages} path='characters'/>
+      <Pages pagesNumber={data.data.characterPages.info.pages} path='characters'/>
       <div className="flex gap-10 flex-wrap mx-auto justify-around py-8">
         {data.data.characters.results.map((character: Character) => (
           <CharacterCards character={character} />
         ))}
       </div>
-      <Pages data={data.data.characterPages.info.pages} path='characters'/>
+      <Pages pagesNumber={data.data.characterPages.info.pages} path='characters'/>
     </>
   );
 }

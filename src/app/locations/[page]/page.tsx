@@ -38,13 +38,13 @@ async function Page({ params }: { params: { page: string } }) {
 
   return (
     <>
-      <Pages data={data.data.locationPages.info.pages} path='locations'/>
+      <Pages pagesNumber={data.data.locationPages.info.pages} path='locations'/>
       <div className="cards-container">
         {data.data.locations.results.map(
           (location: Location) => <CustomCard data={location} path='locations' characters={location.residents} />
         )}
       </div>
-      <Pages data={data.data.locationPages.info.pages} path='locations' />
+      <Pages pagesNumber={data.data.locationPages.info.pages} path='locations' />
     </>
   );
 }

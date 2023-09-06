@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-function Pages({ data, path }: { data: string; path: string }) {
-  const pagesNumber = data;
+function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
   const pathname = usePathname();
   const actualPage = Number(pathname.split('/').slice(-1));
 
@@ -26,9 +25,9 @@ function Pages({ data, path }: { data: string; path: string }) {
         '...',
         Number(pagesNumber),
       ];
-    } else if (pagesArray[1] !== 2) {
+    } else if (pagesArray[1] !== 2 && pagesArray.length > 1) {
       return [pagesArray[0], '...', ...pagesArray.slice(1)];
-    } else if (pagesArray[-0] !== Number(pagesNumber)) {
+    } else if (pagesArray.slice(-1)[0] !== Number(pagesNumber)) {
       return [...pagesArray, '...', Number(pagesNumber)];
     } else {
       return pagesArray;
@@ -38,23 +37,23 @@ function Pages({ data, path }: { data: string; path: string }) {
   const pages = updatePagelist();
 
   return (
-    <div className="flex w-full gap-5 justify-center text-xl">
+    <div className="flex w-full gap-5 justify-center text-white text-xl">
       {actualPage > 1 && (
         <Link href={`${actualPage - 1}`} className="hover:underline">
           {'Back'}
         </Link>
       )}
-      {pages.map((page) =>
-        page === '...' ? (
-          <span>...</span>
-        ) : page === actualPage ? (
-          <span className="text-lb">{page}</span>
-        ) : (
-          <Link className="hover:underline " href={`/${path}/${page}`}>
-            {page}
-          </Link>
-        )
-      )}
+      {pages.length > 1 && pages.map((page) =>
+          page === '...' ? (
+            <span>...</span>
+          ) : page === actualPage ? (
+            <span className="text-lb">{page}</span>
+          ) : (
+            <Link className="hover:underline " href={`/${path}/${page}`}>
+              {page}
+            </Link>
+          )
+        )}
       {actualPage < Number(pagesNumber) && (
         <Link href={`${actualPage + 1}`} className="hover:underline">
           {'Next'}

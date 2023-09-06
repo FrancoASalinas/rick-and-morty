@@ -9,7 +9,7 @@ function Searchbar({ path, label }: { path: string; label: string }) {
 
   const search = (e: any) =>{ 
     e.preventDefault();
-    input !== '' && router.push(`/${path}/search/${input}`)
+    input !== '' && router.push(`/${path}/search/${input}/1`)
 };
 
   return (
