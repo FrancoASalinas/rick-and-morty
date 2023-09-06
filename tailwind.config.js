@@ -14,12 +14,13 @@ module.exports = {
         'lb' : '#69c8ec'
       },
       backgroundImage:{
-        '1' : 'url("/image1.webp")',
-        '2' : 'url("/image2.webp")',
-        '3' : 'url("/image3.webp")',
+        'boxes-gray' : 'linear-gradient(#555555 1.3px, transparent 1.3px), linear-gradient(to right, #555555 1.3px, #000 1.3px)',
+        'boxes-green' : 'linear-gradient(#00ff0099 1.3px, transparent 1.3px), linear-gradient(to right, #00ff0099 1.3px, #000 1.3px)',
+        'boxes-red' : 'linear-gradient(#ff000099 1.3px, transparent 1.3px), linear-gradient(to right, #ff000099 1.3px, #000 1.3px)',
         'polka' : 'radial-gradient(#fafafa 1.3px, #000000 1.3px)',
       },
     },
   },
   plugins: [],
 }
+

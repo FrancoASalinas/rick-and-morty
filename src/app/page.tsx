@@ -94,7 +94,6 @@ function MenuItem({
       <Image
         src={src}
         alt="background image"
-        layout="cover"
         fill
         placeholder='blur'
         style={{
