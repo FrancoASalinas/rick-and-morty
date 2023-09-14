@@ -6,12 +6,19 @@ import Pages from '@/components/Pages';
 
 async function CharacterSearch({
   params,
+  searchParams,
 }: {
   params: { input: string; page: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }) {
+  const searchParamsQueries = {
+    status: searchParams.status ? `status: "${searchParams.status}"` : '',
+    gender: searchParams.gender ? `gender: "${searchParams.gender}"` : '',
+  };
+  
   const data = await getClient().query({
     query: gql`query{
-      charactersName: characters(filter: {name: "${params.input}"}, page: ${params.page}) {
+      charactersName: characters(filter: {name: "${params.input}" ${searchParamsQueries.status} ${searchParamsQueries.gender}}, page: ${params.page}) {
         info{
           pages
         }
@@ -28,7 +35,7 @@ async function CharacterSearch({
           }
         }
       }
-      charactersStatus: characters(filter: {status: "${params.input}"}, page: ${params.page}) {
+      charactersStatus: characters(filter: {status: "${params.input}" ${searchParamsQueries.gender}}, page: ${params.page}) {
         info{
           pages
         }
@@ -45,7 +52,7 @@ async function CharacterSearch({
           }
         }
       }
-      charactersSpecies: characters(filter: {species: "${params.input}"}, page: ${params.page}) {
+      charactersSpecies: characters(filter: {species: "${params.input}" ${searchParamsQueries.status} ${searchParamsQueries.gender}}, page: ${params.page}) {
         info{
           pages
         }
@@ -62,7 +69,7 @@ async function CharacterSearch({
           }
         }
       }
-      charactersType: characters(filter: {type: "${params.input}"}, page: ${params.page}) {
+      charactersType: characters(filter: {type: "${params.input}" ${searchParamsQueries.status} ${searchParamsQueries.gender}}, page: ${params.page}) {
         info{
           pages
         }
@@ -79,7 +86,7 @@ async function CharacterSearch({
           }
         }
       }
-      charactersGender: characters(filter: {gender: "${params.input}"}, page: ${params.page}) {
+      charactersGender: characters(filter: {gender: "${params.input}" ${searchParamsQueries.status}}, page: ${params.page}) {
         info{
           pages
         }

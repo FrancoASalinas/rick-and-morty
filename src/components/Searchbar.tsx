@@ -7,13 +7,13 @@ function Searchbar({ path, label }: { path: string; label: string }) {
   const [input, setInput] = useState('');
   const router = useRouter();
 
-  const search = (e: any) =>{ 
+  const search = (e: any) => {
     e.preventDefault();
-    input !== '' && router.push(`/${path}/search/${input}/1`)
-};
+    input !== '' && router.push(`/${path}/search/${input}/1`);
+  };
 
   return (
-    <div className="w-full flex justify-center py-5 items-center">
+    <>
       <form onSubmit={search}>
         <div className="p-2 border self border-[#aaaa22] px-3 w-fit items-center rounded-full flex bg-[#222] gap-3">
           <input
@@ -34,7 +34,7 @@ function Searchbar({ path, label }: { path: string; label: string }) {
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
 

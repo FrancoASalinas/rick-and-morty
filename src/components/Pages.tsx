@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+
 function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
+  const searchParams = useSearchParams();
   const pathname = usePathname();
   const actualPage = Number(pathname.split('/').slice(-1));
 
@@ -39,23 +41,45 @@ function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
   return (
     <div className="flex w-full gap-5 justify-center text-white text-xl">
       {actualPage > 1 && (
-        <Link href={`${actualPage - 1}`} className="hover:underline">
+        <Link
+          href={
+            `${actualPage - 1}` +
+            (searchParams.toString().length > 0 ?
+              `?${new URLSearchParams(searchParams.toString())}` : '')
+          }
+          className="hover:underline"
+        >
           {'Back'}
         </Link>
       )}
-      {pages.length > 1 && pages.map((page) =>
+      {pages.length > 1 &&
+        pages.map((page) =>
           page === '...' ? (
             <span>...</span>
           ) : page === actualPage ? (
             <span className="text-lb">{page}</span>
           ) : (
-            <Link className="hover:underline " href={`/${path}/${page}`}>
+            <Link
+              className="hover:underline "
+              href={
+                `${page}` +
+                (searchParams.toString().length > 0 ?
+                  `?${new URLSearchParams(searchParams.toString())}` : '')
+              }
+            >
               {page}
             </Link>
           )
         )}
       {actualPage < Number(pagesNumber) && (
-        <Link href={`${actualPage + 1}`} className="hover:underline">
+        <Link
+          href={
+            `${actualPage + 1}` +
+            (searchParams.toString().length > 0 ?
+              `?${new URLSearchParams(searchParams.toString())}` : '')
+          }
+          className="hover:underline"
+        >
           {'Next'}
         </Link>
       )}
