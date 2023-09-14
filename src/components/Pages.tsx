@@ -39,7 +39,7 @@ function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
   const pages = updatePagelist();
 
   return (
-    <div className="flex w-full gap-5 justify-center text-white text-xl">
+    <div className="flex w-full gap-5 justify-center py-3 text-white text-xl">
       {actualPage > 1 && (
         <Link
           href={

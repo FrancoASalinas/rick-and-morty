@@ -86,29 +86,33 @@ function MenuItem({
   const router = useRouter();
 
   return (
-    <Link href={`${label.toLowerCase()}/1`}>
+    <Link href={`${label.toLowerCase()}/1`} >
     <div
       className={`w-full h-full text-2xl cursor-pointer relative overflow-hidden bg-black`}
       onMouseEnter={() => onMouseEnter(id)}
     >
       <Image
         src={src}
-        alt="background image"
+        alt={label}
         fill
         placeholder='blur'
         style={{
-          opacity: focusedItem === id ? '33%' : '100%',
+          opacity: focusedItem === id ? '33%' : '70%',
           objectFit: 'cover',
           objectPosition: position,
           filter: focusedItem === id ? 'blur(2px)' : 'initial',
         }}
       />
       <span
-        className={`absolute w-full h-full z-10 before:content-[attr(id)] before:absolute before:font-r&m before:text-lb before:transition-all before:text-5xl shadow before:top-1/2 before:left-1/2 ${
+        className={`absolute w-full h-full z-10 before:content-[attr(id)] before:absolute before:font-r&m before:text-lb before:transition-all before:text-5xl shadow-black shadow before:top-1/2
+        ${
+
           focusedItem === id
-            ? 'before:-translate-x-1/2'
-            : 'before:translate-x-[22rem]'
-        }`}
+            ? 'before:left-1/2 before:-translate-x-1/2'
+            : 'before:right-5'
+        
+      }
+        `}
         id={label}
       ></span>
     </div>

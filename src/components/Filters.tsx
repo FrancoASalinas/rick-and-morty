@@ -33,7 +33,7 @@ function Filters({
   }
 
   return (
-    <div className="relative ml-6 border border-white p-2 rounded-t bg-black">
+    <div className="relative ml-6 border w-max border-white p-2 rounded-t bg-black">
       <button
         onClick={() => setActive((prev) => !prev)}
         className="flex gap-2 items-center justify-center px-3"
