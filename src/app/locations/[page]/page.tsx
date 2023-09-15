@@ -4,12 +4,12 @@ import Searchbar from '@/components/Searchbar';
 import { getClient } from '@/lib/client';
 import { gql } from '@apollo/client';
 
-export interface Location{
-    name: string;
-    type: string;
-    dimension: string;
-    residents: { image: string }[];
-    id: string
+export interface Location {
+  name: string;
+  type: string;
+  dimension: string;
+  residents: { image: string }[];
+  id: string;
 }
 
 async function Page({ params }: { params: { page: string } }) {
@@ -38,13 +38,24 @@ async function Page({ params }: { params: { page: string } }) {
 
   return (
     <>
-      <Pages pagesNumber={data.data.locationPages.info.pages} path='locations'/>
+      <Pages
+        pagesNumber={data.data.locationPages.info.pages}
+        path="locations"
+      />
       <div className="cards-container">
-        {data.data.locations.results.map(
-          (location: Location) => <CustomCard data={location} path='locations' characters={location.residents} />
-        )}
+        {data.data.locations.results.map((location: Location) => (
+          <CustomCard
+          key={location.id}
+            data={location}
+            path="locations"
+            characters={location.residents}
+          />
+        ))}
       </div>
-      <Pages pagesNumber={data.data.locationPages.info.pages} path='locations' />
+      <Pages
+        pagesNumber={data.data.locationPages.info.pages}
+        path="locations"
+      />
     </>
   );
 }
