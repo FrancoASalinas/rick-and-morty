@@ -19,7 +19,7 @@ function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
       }
     }
 
-    if (pagesArray[1] !== 2 && pagesArray[-0] !== Number(pagesNumber)) {
+    if (pagesArray[1] !== 2 && pagesArray.slice(-1)[0] !== Number(pagesNumber)) {
       return [
         pagesArray[0],
         '...',
