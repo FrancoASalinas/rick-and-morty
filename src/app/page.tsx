@@ -1,11 +1,11 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import image1 from '../../public/image1.webp';
 import image2 from '../../public/image2.webp';
 import image3 from '../../public/image3.webp';
 import Link from 'next/link';
+import Loading from './loading';
 
 export default function Home() {
   const [focusedItem, setFocusedItem] = useState<number>(0);
@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <div
         className={`w-full h-screen grid transition-all ${switchStyle()}`}
         onMouseOut={() => setFocusedItem(0)}
@@ -64,7 +64,7 @@ export default function Home() {
           label="Episodes"
         />
       </div>
-    </>
+      </Suspense>
   );
 }
 
@@ -83,7 +83,6 @@ function MenuItem({
   position: 'top' | 'bottom' | 'center';
   focusedItem: number;
 }) {
-  const router = useRouter();
 
   return (
     <Link href={`${label.toLowerCase()}/1`} >

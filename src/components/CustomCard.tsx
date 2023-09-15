@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import LoadingImage from './LoadingImage';
+import { reduceEachLeadingCommentRange } from 'typescript';
 
 function CustomCard({
   data,
@@ -34,10 +36,13 @@ function CustomCard({
   };
 
   const PopulatedCard = () => {
-   
     const imagesArray = randomImages(
       characters.length,
-      characters.length >= 4 ? 4 : characters.length
+      characters.length >= 4
+        ? 4
+        : characters.length >= 2 && characters.length < 4
+        ? 2
+        : 1
     );
 
     return (
@@ -54,75 +59,19 @@ function CustomCard({
           <div className="backdrop-blur absolute top-full -translate-y-full w-full left-0 z-10 p-2 justify-center flex items-center">
             <span>{data.name}</span>
           </div>
-          {imagesArray.length >= 4 ? (
-            <>
+          {imagesArray.map((item, index, arr) => {
+            return arr.length === 1 ? (
+              <LoadingImage
+                image={characters[imagesArray[index]].image}
+              />
+            ) : (
               <div className="overflow-hidden relative">
-                <Image
-                  fill
-                  alt="character image"
-                  placeholder="empty"
-                  src={characters[imagesArray[0]].image}
-                  style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
+                <LoadingImage
+                  image={characters[imagesArray[index]].image}
                 />
               </div>
-              <div className="overflow-hidden relative">
-                <Image
-                  fill
-                  placeholder="empty"
-                  alt="character image"
-                  src={characters[imagesArray[1]].image}
-                  style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
-                />
-              </div>
-              <div className="overflow-hidden relative">
-                <Image
-                  fill
-                  placeholder="empty"
-                  alt="character image"
-                  src={characters[imagesArray[2]].image}
-                  style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
-                />
-              </div>
-              <div className="overflow-hidden relative">
-                <Image
-                  fill
-                  alt="character image"
-                  placeholder="empty"
-                  src={characters[imagesArray[3]].image}
-                  style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
-                />
-              </div>
-            </>
-          ) : imagesArray.length < 4 && imagesArray.length >= 2 ? (
-            <>
-              <div className="overflow-hidden relative">
-                <Image
-                  fill
-                  alt="character image"
-                  src={characters[imagesArray[0]].image}
-                  placeholder="empty"
-                  style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
-                />
-              </div>
-              <div className="overflow-hidden relative">
-                <Image
-                  placeholder="empty"
-                  fill
-                  alt="character image"
-                  src={characters[imagesArray[1]].image}
-                  style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
-                />
-              </div>
-            </>
-          ) : (
-            <Image
-            placeholder="empty"
-            fill
-            alt="character image"
-            src={characters[0].image}
-            style={{ objectFit: 'cover', backgroundColor: '#aaa' }}
-          />
-          )}
+            );
+          })}
         </div>
       </Link>
     );
@@ -137,8 +86,8 @@ function CustomCard({
           <div className="backdrop-blur absolute top-full -translate-y-full w-full left-0 z-10 p-2 justify-center flex items-center">
             <span>{data.name}</span>
           </div>
-          <div className='w-full h-full flex items-center justify-center'>
-          <span className="p-3">No residents known</span>
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="p-3">No residents known</span>
           </div>
         </div>
       </Link>
