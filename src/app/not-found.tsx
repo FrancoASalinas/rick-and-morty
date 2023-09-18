@@ -17,7 +17,7 @@ function NotFound() {
       <div className="p-6 space-y-4">
         <h2 className="text-4xl">Sorry</h2>
         <p className="text-2xl">
-          We couldn't fin the page you were looking for
+          We couldn&apos;t fin the page you were looking for
         </p>
         <Link href="/" className="hover:underline text-xl">
           Go to Homepage

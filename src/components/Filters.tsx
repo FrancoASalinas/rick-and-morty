@@ -60,7 +60,7 @@ function Filters({
             </span>
             <ul>
             {filter.filters.map((item) => (
-              <li className='flex justify-between items-center w-full'>
+              <li className='flex justify-between items-center w-full' key={item}>
                 <label htmlFor={item}>
                   {item}
                   </label>
