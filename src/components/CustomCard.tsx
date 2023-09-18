@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import LoadingImage from './LoadingImage';
-import { reduceEachLeadingCommentRange } from 'typescript';
 
 function CustomCard({
   data,
@@ -61,17 +59,25 @@ function CustomCard({
           </div>
           {imagesArray.map((item, index, arr) => {
             return arr.length === 1 ? (
-              <LoadingImage
+              <Image
+                src={characters[imagesArray[index]].image}
+                fill
                 key={item}
-                sizes='13rem'
-                image={characters[imagesArray[index]].image}
+                sizes="13rem"
+                placeholder="empty"
+                alt="character image"
+                className={`z-[5] object-cover`}
               />
             ) : (
               <div className="overflow-hidden relative">
-                <LoadingImage
-                key={item}
-                sizes='13rem'
-                  image={characters[imagesArray[index]].image}
+                <Image
+                  src={characters[imagesArray[index]].image}
+                  fill
+                  key={item}
+                  sizes="13rem"
+                  placeholder="empty"
+                  alt="character image"
+                  className={`z-[5] object-cover`}
                 />
               </div>
             );
