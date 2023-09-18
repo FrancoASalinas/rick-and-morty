@@ -16,7 +16,7 @@ export default function RoutesLayout({
     return (
       <>
           <Header />
-          <main className="min-h-screen w-full mx-auto max-w-4xl backdrop-blur-[2px] text-white">
+          <main className="min-h-screen overflow-x-hidden p-3 w-full mx-auto max-w-4xl backdrop-blur-[2px] text-white">
             {children}
           </main>
       </>

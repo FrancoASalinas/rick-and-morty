@@ -15,7 +15,7 @@ function Searchbar({ path, label }: { path: string; label: string }) {
   return (
    
       <form onSubmit={search} className='w-full flex justify-center items-center'>
-        <div className="p-2 border  border-[#aaaa22] px-3 w-fit items-center rounded-full flex bg-[#222] gap-3">
+        <div className="p-2 border  border-[#aaaa22] w-fit items-center rounded-full flex bg-[#222] sm:gap-3">
           <input
             type="text"
             onChange={(e) => setInput(e.target.value)}
