@@ -9,7 +9,7 @@ function CharactersList({ characters, subject }: { characters: Character[]; subj
   return (
     <div className="p-3">
       <div>
-        <div className="w-1/4 flex justify-between items-center">
+        <div className="sm:w-40 w-full flex justify-between items-center">
           <span className="text-3xl underline">{subject[0].toUpperCase() + subject.slice(1)}</span>
           {characters.length > 0 && (
             <span

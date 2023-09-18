@@ -19,10 +19,9 @@ function Filters({
       Array.from(searchParams.entries())
     );
 
-    if(currentQueries.get(key) === value){
+    if (currentQueries.get(key) === value) {
       currentQueries.delete(key);
-    }
-     else if (currentQueries.get(key) !== null) {
+    } else if (currentQueries.get(key) !== null) {
       currentQueries.delete(key);
       currentQueries.set(key, value);
     } else {
@@ -50,20 +49,21 @@ function Filters({
       </button>
       <ul
         className={` ${
-          active ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 -translate-y-1/4'
-        } absolute top-full border transition-all border-white p-2 divide-y space-y-3 bg-black w-max z-30 left-0`}
+          active
+            ? 'visible opacity-100 translate-y-0'
+            : 'invisible opacity-0 -translate-y-1/4'
+        } absolute top-full border transition-all border-white p-2 divide-y space-y-3 bg-black w-max z-30 sm:left-0 right-0`}
       >
         {filters.map((filter) => (
           <li key={filter.title}>
-            <span className='text-xl text-center w-full'>
-            {filter.title}
-            </span>
+            <span className="text-xl text-center w-full">{filter.title}</span>
             <ul>
-            {filter.filters.map((item) => (
-              <li className='flex justify-between items-center w-full' key={item}>
-                <label htmlFor={item}>
-                  {item}
-                  </label>
+              {filter.filters.map((item) => (
+                <li
+                  className="flex justify-between items-center w-full"
+                  key={item}
+                >
+                  <label htmlFor={item}>{item}</label>
                   <input
                     type="radio"
                     id={item}
@@ -71,14 +71,16 @@ function Filters({
                       searchParams.get(filter.title.toLowerCase()) ===
                       item.toLowerCase()
                     }
-                    className='appearance-none block w-4 h-4 checked:bg-lb border rounded-full border-white bg-black'
+                    className="appearance-none block w-4 h-4 checked:bg-lb border rounded-full border-white bg-black"
                     name={filter.title}
-                    onClick={(event: any) => event.target.checked && handleQueryParam(filter.title, item)}
+                    onClick={(event: any) =>
+                      event.target.checked &&
+                      handleQueryParam(filter.title, item)
+                    }
                     onChange={(e) => handleQueryParam(filter.title, item)}
                   />
-                
-              </li>
-            ))}
+                </li>
+              ))}
             </ul>
           </li>
         ))}

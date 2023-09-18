@@ -1,4 +1,4 @@
-import Residents from "@/components/CharactersList";
+import CharactersList from "@/components/CharactersList";
 import { getClient } from "@/lib/client";
 import { gql } from "@apollo/client";
 
@@ -37,7 +37,7 @@ async function Episode({params}: {params: {id: string}}) {
           <span className="text-3xl underline">Air Date</span>
           {data.data.episode.air_date}
         </div>
-        <Residents characters={data.data.episode.characters} subject='characters'  />
+        <CharactersList characters={data.data.episode.characters} subject='characters'  />
       </>
      );
 }
