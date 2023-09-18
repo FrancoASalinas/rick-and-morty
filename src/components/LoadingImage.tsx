@@ -3,10 +3,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 function LoadingImage({
   image,
-  contained,
+  sizes,
 }: {
   image: string;
-  contained?: boolean;
+  sizes?: string;
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -15,6 +15,7 @@ function LoadingImage({
       <Image
         src={image}
         fill
+        sizes={sizes}
         placeholder="empty"
         onLoadingComplete={() => setIsLoaded(true)}
         alt="character image"

@@ -55,7 +55,7 @@ function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
       {pages.length > 1 &&
         pages.map((page, index) =>
           page === '...' ? (
-            <span key={index}>...</span>
+            <span key={index + page}>...</span>
           ) : page === actualPage ? (
             <span key={page.toString()} className="text-lb">{page}</span>
           ) : (

@@ -63,12 +63,14 @@ function CustomCard({
             return arr.length === 1 ? (
               <LoadingImage
                 key={item}
+                sizes='13rem'
                 image={characters[imagesArray[index]].image}
               />
             ) : (
               <div className="overflow-hidden relative">
                 <LoadingImage
                 key={item}
+                sizes='13rem'
                   image={characters[imagesArray[index]].image}
                 />
               </div>

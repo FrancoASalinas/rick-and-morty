@@ -11,7 +11,7 @@ function CharacterCards({ character }: { character: Character }) {
           <div className="top-full absolute left-0 -translate-y-full z-10 mx-auto backdrop-blur p-2 border-t-lb border-t w-full flex justify-center">
             <span className="z-20 text-sm text-black">{character.name}</span>
           </div>
-          <LoadingImage image={character.image}/>          
+          <LoadingImage image={character.image} sizes='9rem'/>          
         </div>
         <div
           className={`face backface  bg-[length:40px_40px] relative rounded-xl ${
