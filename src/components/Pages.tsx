@@ -53,13 +53,14 @@ function Pages({ pagesNumber, path }: { pagesNumber: string; path: string }) {
         </Link>
       )}
       {pages.length > 1 &&
-        pages.map((page) =>
+        pages.map((page, index) =>
           page === '...' ? (
-            <span>...</span>
+            <span key={index}>...</span>
           ) : page === actualPage ? (
-            <span className="text-lb">{page}</span>
+            <span key={page.toString()} className="text-lb">{page}</span>
           ) : (
             <Link
+            key={page.toString()}
               className="hover:underline "
               href={
                 `${page}` +

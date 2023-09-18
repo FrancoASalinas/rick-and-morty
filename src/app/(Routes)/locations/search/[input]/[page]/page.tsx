@@ -1,7 +1,7 @@
 import Pages from '@/components/Pages';
 import { getClient } from '@/lib/client';
 import { gql } from '@apollo/client';
-import { Location } from '@/app/locations/[page]/page';
+import { Location } from '@/app/(Routes)/locations/[page]/page';
 import CustomCard from '@/components/CustomCard';
 
 async function SearchLocation({
@@ -81,6 +81,7 @@ async function SearchLocation({
               data={location}
               characters={location.residents}
               path="locations"
+              key={location.id}
             />
           ))
         ) : (

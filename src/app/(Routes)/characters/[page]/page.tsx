@@ -57,7 +57,7 @@ async function Characters({
       />
       <div className="flex gap-10 flex-wrap mx-auto justify-around py-8">
         {data.data.characters.results.map((character: Character) => (
-          <CharacterCards character={character} />
+          <CharacterCards character={character} key={character.id} />
         ))}
       </div>
       <Pages

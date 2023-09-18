@@ -62,11 +62,13 @@ function CustomCard({
           {imagesArray.map((item, index, arr) => {
             return arr.length === 1 ? (
               <LoadingImage
+                key={item}
                 image={characters[imagesArray[index]].image}
               />
             ) : (
               <div className="overflow-hidden relative">
                 <LoadingImage
+                key={item}
                   image={characters[imagesArray[index]].image}
                 />
               </div>

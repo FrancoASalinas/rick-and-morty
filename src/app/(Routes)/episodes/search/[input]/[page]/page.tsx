@@ -40,6 +40,7 @@ async function EpisodeSearch({
               characters={episode.characters}
               data={episode}
               path="episodes"
+              key={episode.id}
             />
           ))}
           <Pages

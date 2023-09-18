@@ -54,7 +54,7 @@ function Filters({
         } absolute top-full border transition-all border-white p-2 divide-y space-y-3 bg-black w-max z-30 left-0`}
       >
         {filters.map((filter) => (
-          <li>
+          <li key={filter.title}>
             <span className='text-xl text-center w-full'>
             {filter.title}
             </span>

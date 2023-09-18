@@ -130,7 +130,7 @@ async function CharacterSearch({
       <div className="cards-container">
         {charactersSearchResult.length > 0 ? (
           charactersSearchResult.map((character: Character) => (
-            <CharacterCards character={character} />
+            <CharacterCards character={character} key={character.id} />
           ))
         ) : (
           <span className="text-2xl text-lb">No Results found</span>

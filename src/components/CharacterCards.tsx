@@ -1,5 +1,5 @@
 'use client'
-import { Character } from '@/app/characters/[page]/page';
+import { Character } from '@/app/(Routes)/characters/[page]/page';
 import LoadingImage from './LoadingImage';
 
 function CharacterCards({ character }: { character: Character }) {

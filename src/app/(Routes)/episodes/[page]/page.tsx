@@ -40,6 +40,7 @@ async function Episodes({ params }: { params: { page: string } }) {
             path="episodes"
             characters={episode.characters}
             data={episode}
+            key={episode.id}
           />
         ))}
       </div>

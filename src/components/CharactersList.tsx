@@ -1,5 +1,5 @@
 'use client';
-import { Character } from '@/app/characters/[page]/page';
+import { Character } from '@/app/(Routes)/characters/[page]/page';
 import { useState } from 'react';
 import CharacterCards from './CharacterCards';
 
@@ -28,7 +28,7 @@ function CharactersList({ characters, subject }: { characters: Character[]; subj
           } flex gap-10 flex-wrap mx-auto justify-around py-8`}
         >
           {characters.map((resident) => (
-            <CharacterCards character={resident} />
+            <CharacterCards character={resident} key={resident.id} />
           ))}
         </div>
       ) : (
